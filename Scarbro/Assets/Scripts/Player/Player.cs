@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     public float jumpForce;
     public float gravityChangeCooldown;
 
-
     [Header("--Move--")]
     [SerializeField] Transform checkGroundTransform;
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -37,6 +36,9 @@ public class Player : MonoBehaviour
         //Backups
         checkGroundOriginalPosY = checkGroundTransform.localPosition.y;
         rigibodyOriginalGravityScale = rigi.gravityScale;
+
+        //player animator
+        //anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -46,6 +48,16 @@ public class Player : MonoBehaviour
         InputJump();
         InputGravityChange();
 
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            spriteRenderer.flipX = false;
+            PlayAnimation("Robot_Walk");//Play Walk Animation Right side
+        }
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            spriteRenderer.flipX = true;
+            PlayAnimation("Robot_Walk");//Play Walk Animation Left side
+        }
     }
 
     private void FixedUpdate()
@@ -60,6 +72,8 @@ public class Player : MonoBehaviour
         {
             bool isGrounding = Physics2D.OverlapPoint(checkGroundTransform.position) != null; //Is touching ground?
 
+            PlayAnimation("Robot_Jump");//Play Jump Animation
+            
             if (isGrounding)
             {
                 rigi.AddForce(Vector2.up * (isGravityInverse ? -jumpForce : jumpForce), ForceMode2D.Impulse);
@@ -99,13 +113,11 @@ public class Player : MonoBehaviour
     //THis function return where we need to move the sprite on gravity changes
     float GetSpritePosAtFlip()
     {
-        if(isGravityInverse)
-        {
-            return -0.476f;
-        }
-        else
-        {
-            return 0.274f;
-        }
+        return -0.1f;
+    }
+
+    void PlayAnimation (string animName)
+    {
+        spriteRenderer.transform.GetComponent<Animator>().Play(animName);//Play Jump Animation
     }
 }
