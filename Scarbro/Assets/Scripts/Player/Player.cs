@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public float speed;
     public float jumpForce;
     public float gravityChangeCooldown;
+    public Vector3 spawnLocation;
 
     [Header("--Move--")]
     [SerializeField] Transform checkGroundTransform;
@@ -120,4 +121,10 @@ public class Player : MonoBehaviour
     {
         spriteRenderer.transform.GetComponent<Animator>().Play(animName);//Play Jump Animation
     }
+
+    //function to update spawn of player
+    //public void UpdateSpawn(Vector3 spawn)
+    //{
+        //spawnLocation = spawn;
+    //}
 }
