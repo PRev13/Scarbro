@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -14,9 +15,13 @@ public class Player : MonoBehaviour
     [Header("--Move--")]
     [SerializeField] Transform checkGroundTransform;
     [SerializeField] SpriteRenderer spriteRenderer;
+    Animator anim;
     Vector2 movVector;
     bool isGravityInverse = false;
     bool canChangeGravity = true;
+
+    //Lifes
+    int lives = 3;
 
     //References
     Rigidbody2D rigi;
@@ -33,10 +38,14 @@ public class Player : MonoBehaviour
         //Get references
         inputMap = GameControllerInputs.GetIstance();
         rigi = GetComponent<Rigidbody2D>();
+        anim = spriteRenderer.GetComponent<Animator>();
 
         //Backups
         checkGroundOriginalPosY = checkGroundTransform.localPosition.y;
         rigibodyOriginalGravityScale = rigi.gravityScale;
+
+        //Default
+        spawnLocation = transform.position;
 
         //player animator
         //anim = GetComponent<Animator>();
@@ -119,7 +128,21 @@ public class Player : MonoBehaviour
 
     void PlayAnimation (string animName)
     {
-        spriteRenderer.transform.GetComponent<Animator>().Play(animName);//Play Jump Animation
+        anim.Play(animName);//Play Jump Animation
+    }
+
+    public void Die()
+    {
+        lives--;
+        if(lives > 0) //If we still have lives, just respawn to last door
+        {
+            transform.position = spawnLocation;
+        }
+        else //we dont have more lives, we need to reset level
+        {
+            print("Reset level");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     //function to update spawn of player
