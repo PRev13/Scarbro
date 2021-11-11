@@ -128,7 +128,7 @@ public class Player : MonoBehaviour
 
     void PlayAnimation (string animName)
     {
-        anim.Play(animName);//Play Jump Animation
+        anim.Play(animName);//Play "animName" Animation
     }
 
     public void Die()
