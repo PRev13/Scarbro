@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
 
         //player animator
         //anim = GetComponent<Animator>();
+
     }
 
     void Update()
@@ -86,6 +87,7 @@ public class Player : MonoBehaviour
             
             if (isGrounding)
             {
+                SoundManager.PlaySound("Jump");// Play Jump Sound
                 rigi.AddForce(Vector2.up * (isGravityInverse ? -jumpForce : jumpForce), ForceMode2D.Impulse);
             }
         }
@@ -97,6 +99,8 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q) || inputMap.B_button_down)
         {
+            SoundManager.PlaySound("Inverse");//Play Inverse sound when gravity is inversed.
+
             isGravityInverse = !isGravityInverse; //Inverse gravity
             rigi.gravityScale = isGravityInverse ? -rigibodyOriginalGravityScale : rigibodyOriginalGravityScale; //Update gravity scale
             //We update ground check postion
@@ -107,6 +111,7 @@ public class Player : MonoBehaviour
             //Move spriteRenderer
             spriteRenderer.flipY = isGravityInverse;
             spriteRenderer.transform.localPosition = new Vector3(0f, GetSpritePosAtFlip(), 0f);
+
 
             //Cooldown
             canChangeGravity = false;
