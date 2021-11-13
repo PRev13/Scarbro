@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[SelectionBase]
 public class Cage : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D other) {

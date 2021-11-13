@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class People : MonoBehaviour
 {
-    public Dialogues dialogues;
+    Dialogues dialogues;
     public Sprite[] sprites;
 
     private SpriteRenderer _spriteRenderer;
@@ -14,6 +14,7 @@ public class People : MonoBehaviour
     }
 
     private void Start() {
+        dialogues = GameManager.Instance.dialogues;
         _spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
 
     }
