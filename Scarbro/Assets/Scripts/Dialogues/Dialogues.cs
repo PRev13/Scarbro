@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Dialogues : MonoBehaviour
 {
-    public string[] lines = {"Scarbro : No need to panic, you are in safe hands.","People : Phew... We thought this was it. Go save others."}; 
+    public string[] lines = {"Scarbro : No need to panic, you are in safe hands.","People : Phew... We thought this was it. Go save others."}; //these lines arent the ones used in game rn
     public float textSpeed; //Dialogue Speed
 
     private int index; // Index for the dialogue lines
@@ -54,7 +54,7 @@ public class Dialogues : MonoBehaviour
             StartCoroutine(TypeLine());
         } else {
             //End of Conversation
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
             dialogueEnded = true;
         }
     }

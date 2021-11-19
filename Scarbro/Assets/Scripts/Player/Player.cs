@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public float jumpForce;
     public float gravityChangeCooldown;
     public Vector3 spawnLocation;
+    public int peopleSaved;     //People saved
 
     [Header("--Move--")]
     [SerializeField] Transform checkGroundTransform;
