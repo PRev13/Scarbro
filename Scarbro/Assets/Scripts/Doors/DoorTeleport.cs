@@ -6,7 +6,8 @@ public class DoorTeleport : MonoBehaviour
 {
 
     public Transform doorTarget;
-    public Transform cameraTarget;
+    public BoxCamera boxCamera;
+    public BoxCamera.FACES face;
     GameObject thePlayer;
     
 
@@ -17,9 +18,13 @@ public class DoorTeleport : MonoBehaviour
     private void Start()
     {
         thePlayer = GameObject.FindGameObjectWithTag(k.Tags.PLAYER);
+        if(boxCamera == null)
+        {
+            Debug.LogWarning("This door is missing camera", gameObject);
+        }
     }
 
-    void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         SoundManager.PlaySound("Teleport");//Play Teleport Sound when passing through doors.
         if (spawnToLeftOfTargetDoor) //makes player spawn left of door
@@ -34,10 +39,8 @@ public class DoorTeleport : MonoBehaviour
             //reset spawn now for if player dies later
             thePlayer.GetComponent<Player>().spawnLocation = thePlayer.transform.position;
         }
-        Vector3 pos = cameraTarget.position;
-        pos.z = -10f;
-        Camera.main.transform.position = pos;
-        
+
+        boxCamera.MoveCamera(doorTarget.GetComponent<DoorTeleport>().face);
     }
 
     private void OnDrawGizmosSelected()

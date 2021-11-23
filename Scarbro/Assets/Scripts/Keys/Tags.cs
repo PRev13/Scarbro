@@ -11,5 +11,6 @@ namespace k
 		public const string PLAYER = "Player";
 		public const string GAME_CONTROLLER = "GameController";
 		public const string TRAP = "Trap";
+		public const string CAGE = "Cage";
 	}
 }

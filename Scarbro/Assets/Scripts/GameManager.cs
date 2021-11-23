@@ -12,9 +12,10 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         dialogues = GameObject.FindObjectOfType<Dialogues>();
+        SceneManager.sceneLoaded += OnLevelChange;
     }
 
-    private void OnLevelWasLoaded(int level)
+    void OnLevelChange(Scene _newScene ,LoadSceneMode _mode)
     {
         Awake();
     }
