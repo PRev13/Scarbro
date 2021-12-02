@@ -8,11 +8,12 @@ public class GameManager : MonoBehaviour
 
     //References
     public Dialogues dialogues;
+    public Game_ui ui;
 
     private void Awake()
     {
         dialogues = GameObject.FindObjectOfType<Dialogues>();
-        SceneManager.sceneLoaded += OnLevelChange;
+        ui = GameObject.FindObjectOfType<Game_ui>();
     }
 
     void OnLevelChange(Scene _newScene ,LoadSceneMode _mode)
@@ -38,5 +39,6 @@ public class GameManager : MonoBehaviour
         GameObject go = new GameObject();
         instance = go.AddComponent<GameManager>();
         DontDestroyOnLoad(go);
+        SceneManager.sceneLoaded += instance.OnLevelChange;
     }
 }

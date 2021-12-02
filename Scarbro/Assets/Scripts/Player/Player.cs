@@ -11,7 +11,8 @@ public class Player : MonoBehaviour
     public float speed;
     public float jumpForce;
     public float gravityChangeCooldown;
-    public Vector3 spawnLocation;
+    Vector3 spawnLocation;
+    bool spawnGravityInveser = false;
     public int peopleSaved;     //People saved
 
     [Header("--Move--")]
@@ -102,22 +103,26 @@ public class Player : MonoBehaviour
         {
             SoundManager.PlaySound("Inverse");//Play Inverse sound when gravity is inversed.
 
-            isGravityInverse = !isGravityInverse; //Inverse gravity
-            rigi.gravityScale = isGravityInverse ? -rigibodyOriginalGravityScale : rigibodyOriginalGravityScale; //Update gravity scale
-            //We update ground check postion
-            Vector3 groundCheckPos = checkGroundTransform.localPosition;
-            groundCheckPos.y = isGravityInverse ? -checkGroundOriginalPosY : checkGroundOriginalPosY;
-            checkGroundTransform.localPosition = groundCheckPos;
-
-            //Move spriteRenderer
-            spriteRenderer.flipY = isGravityInverse;
-            spriteRenderer.transform.localPosition = new Vector3(0f, GetSpritePosAtFlip(), 0f);
-
+            InverseGravity(!isGravityInverse);
 
             //Cooldown
             canChangeGravity = false;
             Invoke(nameof(EnableGravityChange), gravityChangeCooldown);
         }
+    }
+
+    void InverseGravity(bool _isGravityInverse)
+    {
+        isGravityInverse = _isGravityInverse; //Inverse gravity
+        rigi.gravityScale = isGravityInverse ? -rigibodyOriginalGravityScale : rigibodyOriginalGravityScale; //Update gravity scale
+                                                                                                             //We update ground check postion
+        Vector3 groundCheckPos = checkGroundTransform.localPosition;
+        groundCheckPos.y = isGravityInverse ? -checkGroundOriginalPosY : checkGroundOriginalPosY;
+        checkGroundTransform.localPosition = groundCheckPos;
+
+        //Move spriteRenderer
+        spriteRenderer.flipY = isGravityInverse;
+        spriteRenderer.transform.localPosition = new Vector3(0f, GetSpritePosAtFlip(), 0f);
     }
 
     void EnableGravityChange()
@@ -143,12 +148,20 @@ public class Player : MonoBehaviour
         if(lives > 0) //If we still have lives, just respawn to last door
         {
             transform.position = spawnLocation;
+            InverseGravity(spawnGravityInveser);
+            GameManager.Instance.ui.LivesUpdate(lives);
         }
         else //we dont have more lives, we need to reset level
         {
             print("Reset level");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+    }
+
+    public void UpdateSpawnPosition(Vector3 _pos)
+    {
+        spawnLocation = _pos;
+        spawnGravityInveser = isGravityInverse;
     }
 
     //function to update spawn of player

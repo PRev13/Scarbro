@@ -31,13 +31,13 @@ public class DoorTeleport : MonoBehaviour
         {
             thePlayer.transform.position = doorTarget.transform.position - new Vector3(spawnOffset, 0f, 0);
             //reset spawn now for if player dies later
-            thePlayer.GetComponent<Player>().spawnLocation = thePlayer.transform.position;
+            thePlayer.GetComponent<Player>().UpdateSpawnPosition(thePlayer.transform.position);
         }
         else //makes player spawn right of door
         {
             thePlayer.transform.position = doorTarget.transform.position + new Vector3(spawnOffset, 0f, 0);
             //reset spawn now for if player dies later
-            thePlayer.GetComponent<Player>().spawnLocation = thePlayer.transform.position;
+            thePlayer.GetComponent<Player>().UpdateSpawnPosition(thePlayer.transform.position);
         }
 
         boxCamera.MoveCamera(doorTarget.GetComponent<DoorTeleport>().face);
