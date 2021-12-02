@@ -36,8 +36,14 @@ public class BoxCamera : MonoBehaviour
                 break;
         }
 
-        //moveTween= transform.DOMove(destinyPos, 1f);
-        Vector3[] path = { destinyPos };
+        //We get a middle point to not move close to the rectangle and the move have more angle
+        //Push the point the same distance form any other point
+        Vector3 midPoint = Vector3.Lerp(transform.position, destinyPos, 0.5f);
+        midPoint = midPoint - boxTransform.position;
+        midPoint.Normalize();
+        midPoint = boxTransform.position + midPoint * 8.41f;
+        //Call Dotween
+        Vector3[] path = { midPoint, destinyPos };
         moveTween = transform.DOPath(path, 1f, PathType.CatmullRom);
     }
 

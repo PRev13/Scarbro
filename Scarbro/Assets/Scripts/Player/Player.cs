@@ -84,11 +84,10 @@ public class Player : MonoBehaviour
         if (inputMap.A_button_down)
         {
             bool isGrounding = Physics2D.OverlapPoint(checkGroundTransform.position) != null; //Is touching ground?
-
-            PlayAnimation("Robot_Jump");//Play Jump Animation
             
             if (isGrounding)
             {
+                PlayAnimation("Robot_Jump");//Play Jump Animation
                 SoundManager.PlaySound("Jump");// Play Jump Sound
                 rigi.AddForce(Vector2.up * (isGravityInverse ? -jumpForce : jumpForce), ForceMode2D.Impulse);
             }
