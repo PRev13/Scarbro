@@ -7,6 +7,7 @@ using TMPro;
 public class Game_ui : MonoBehaviour
 {
     [SerializeField] Image[] liveImgs;
+    [SerializeField] TextMeshProUGUI peopleSavedTxt;
 
     public void LivesUpdate(int _lives)
     {
@@ -21,6 +22,11 @@ public class Game_ui : MonoBehaviour
         {
             liveImgs[i].enabled = true;
         }
+    }
+
+    public void PeopleSavedUpdate(int _n)
+    {
+        peopleSavedTxt.SetText(_n + "/6");
     }
 
 

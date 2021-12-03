@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public float gravityChangeCooldown;
     Vector3 spawnLocation;
     bool spawnGravityInveser = false;
-    public int peopleSaved;     //People saved
+    int peopleSaved;     //People saved
 
     [Header("--Move--")]
     [SerializeField] Transform checkGroundTransform;
@@ -162,6 +162,17 @@ public class Player : MonoBehaviour
     {
         spawnLocation = _pos;
         spawnGravityInveser = isGravityInverse;
+    }
+
+    public void UpdatePeopleRescueAdd1()
+    {
+        peopleSaved++;
+        GameManager.Instance.ui.PeopleSavedUpdate(peopleSaved);
+    }
+
+    public int GetPeopleRescue()
+    {
+        return peopleSaved;
     }
 
     //function to update spawn of player

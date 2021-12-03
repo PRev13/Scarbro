@@ -34,7 +34,7 @@ public class People : MonoBehaviour
        if(other.gameObject.tag == "Player" ){
             dialogues.GetComponent<Dialogues>().startDialouge();
             Destroy(this.gameObject); // People disappear right away however only 1 person does
-            thePlayer.GetComponent<Player>().peopleSaved += 1;
+            thePlayer.GetComponent<Player>().UpdatePeopleRescueAdd1();
         }
    }
 }

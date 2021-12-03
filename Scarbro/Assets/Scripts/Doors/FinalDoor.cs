@@ -16,7 +16,7 @@ public class FinalDoor : MonoBehaviour
     void OnTriggerStay2D(Collider2D collision)
     {
         SoundManager.PlaySound("Teleport");//Play Teleport Sound when passing through doors.
-        if (thePlayer.GetComponent<Player>().peopleSaved == 6) //makes player spawn left of door
+        if (thePlayer.GetComponent<Player>().GetPeopleRescue() == 6) //makes player spawn left of door
         {
             thePlayer.transform.position = new Vector3(0,-11,0); //transport to a completed "screen"
                                                                //if we had multiple levels we'd transition to next scene

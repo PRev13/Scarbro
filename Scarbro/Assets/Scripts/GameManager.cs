@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
 
     //References
+    public Player player;
     public Dialogues dialogues;
     public Game_ui ui;
 
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     {
         dialogues = GameObject.FindObjectOfType<Dialogues>();
         ui = GameObject.FindObjectOfType<Game_ui>();
+        player = GameObject.FindGameObjectWithTag(k.Tags.PLAYER).GetComponent<Player>();
     }
 
     void OnLevelChange(Scene _newScene ,LoadSceneMode _mode)
