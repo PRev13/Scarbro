@@ -53,11 +53,11 @@ public class DoorTeleport : MonoBehaviour
             DoorTeleport otherDoor = doorTarget.GetComponent<DoorTeleport>();
             //We draw a circle where the player is going to spawn
             Vector3 offset = Vector3.zero;
-            offset.x = otherDoor.spawnToLeftOfTargetDoor ? otherDoor.spawnOffset : -otherDoor.spawnOffset;
+            offset.x = spawnToLeftOfTargetDoor ? otherDoor.spawnOffset : -otherDoor.spawnOffset;
             Gizmos.DrawWireSphere(doorTarget.position + offset, 0.3f);
             //We draw where is going to spawn in this door
             Gizmos.color = Color.green;
-            offset.x = spawnToLeftOfTargetDoor ? spawnOffset : -spawnOffset;
+            offset.x = otherDoor.spawnToLeftOfTargetDoor ? spawnOffset : -spawnOffset;
             Gizmos.DrawWireSphere(transform.position + offset, 0.3f);
         }
     }
