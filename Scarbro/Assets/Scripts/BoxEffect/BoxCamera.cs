@@ -14,25 +14,32 @@ public class BoxCamera : MonoBehaviour
     public void MoveCamera(FACES _toFace)
     {
         Vector3 destinyPos = boxTransform.position;
+        Vector3 destinyRotation = Vector3.zero;
         switch (_toFace)
         {
             case FACES.FACE1:
                 destinyPos += new Vector3(0f, 0f, -8.41f);
+                destinyRotation = Vector3.zero;
                 break;
             case FACES.FACE2:
                 destinyPos += new Vector3(8.41f, 0f, 0f);
+                destinyRotation = new Vector3(0f, 270f, 0f);
                 break;
             case FACES.FACE3:
                 destinyPos += new Vector3(0f, 0f, 8.41f);
+                destinyRotation = new Vector3(0f, 180f, 0f);
                 break;
             case FACES.FACE4:
                 destinyPos += new Vector3(-8.41f, 0f, 0f);
+                destinyRotation = new Vector3(0f, 90f, 0f);
                 break;
             case FACES.FACE5:
                 destinyPos += new Vector3(0f, -8.41f, 0f);
+                destinyRotation = new Vector3(270f, 0f, 0f);
                 break;
             case FACES.FACE6:
                 destinyPos += new Vector3(0f, 8.41f, 0f);
+                destinyRotation = new Vector3(90f, 0f, 0f);
                 break;
         }
 
@@ -45,11 +52,16 @@ public class BoxCamera : MonoBehaviour
         //Call Dotween
         Vector3[] path = { midPoint, destinyPos };
         moveTween = transform.DOPath(path, 1f, PathType.CatmullRom);
+
+        //Rotation to camera
+        transform.DORotate(destinyRotation, 1f).OnComplete(ReEnableMovePlayer);
+
+        //Disable move of player
+        GameManager.Instance.player.isAbleToMove = false;
     }
 
-    private void LateUpdate()
+   void ReEnableMovePlayer()
     {
-        if(moveTween != null && moveTween.IsActive()) 
-            transform.LookAt(boxTransform.position);//Make the camera always look at center of the 3Dbox
+        GameManager.Instance.player.isAbleToMove = true;
     }
 }

@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     Vector2 movVector;
     bool isGravityInverse = false;
     bool canChangeGravity = true;
+    public bool isAbleToMove = true;
 
     //Lifes
     int lives = 3;
@@ -57,6 +58,12 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if(isAbleToMove == false)
+        {
+            movVector.x = 0f;
+            return;
+        }
+
         movVector.x = inputMap.LeftDirectional_Horizontal * speed; //Get X axis
 
         InputJump();
