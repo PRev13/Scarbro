@@ -20,6 +20,6 @@ public class Cage : MonoBehaviour
         i += 1;
         Destroy(child.gameObject);
     }
-    Debug.Log(transform.childCount);
+    //Debug.Log(transform.childCount);
 }
 }

@@ -14,13 +14,14 @@ public class BoxCamera : MonoBehaviour
     public void MoveCamera(FACES _toFace)
     {
         Vector3 destinyPos = boxTransform.position;
+
         switch (_toFace)
         {
             case FACES.FACE1:
-                destinyPos += new Vector3(0f, 0f, -8.41f);
+                destinyPos += new Vector3(0f, 0.34f, -8.41f);
                 break;
             case FACES.FACE2:
-                destinyPos += new Vector3(8.41f, 0f, 0f);
+                destinyPos += new Vector3(8.41f, 0.34f, 0f);
                 break;
             case FACES.FACE3:
                 destinyPos += new Vector3(0f, 0f, 8.41f);
