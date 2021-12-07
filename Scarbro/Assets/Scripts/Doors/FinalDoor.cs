@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FinalDoor : MonoBehaviour
 {
 
     GameObject thePlayer;
-    public Transform cameraTarget;
+    //public Transform cameraTarget;
+    public string nextLevelName;
 
     private void Start()
     {
@@ -18,13 +20,16 @@ public class FinalDoor : MonoBehaviour
         SoundManager.PlaySound("Teleport");//Play Teleport Sound when passing through doors.
         if (thePlayer.GetComponent<Player>().GetPeopleRescue() == 6) //makes player spawn left of door
         {
-            thePlayer.transform.position = new Vector3(0,-11,0); //transport to a completed "screen"
-                                                               //if we had multiple levels we'd transition to next scene
+            //thePlayer.transform.position = new Vector3(0,-11,0); //transport to a completed "screen"
+                                                                 //if we had multiple levels we'd transition to next scene
+            Debug.Log("Complete Level");
+            SceneManager.LoadScene(nextLevelName);
 
+            /*
             Vector3 pos = cameraTarget.position;
             pos.z = -10f;
             Camera.main.transform.position = pos;
+            */
         }
-
     }
 }
