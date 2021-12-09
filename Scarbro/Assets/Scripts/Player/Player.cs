@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 
     //Lifes
     int lives = 3;
+    float livesCoolDown;
 
     //References
     Rigidbody2D rigi;
@@ -151,10 +152,17 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
+        if(livesCoolDown + 0.2f >= Time.time)
+        {
+            return;
+        }
+
+        livesCoolDown = Time.time;
+
         lives--;
         if(lives > 0) //If we still have lives, just respawn to last door
         {
-            transform.position = spawnLocation;
+            rigi.position = spawnLocation;
             InverseGravity(spawnGravityInveser);
             GameManager.Instance.ui.LivesUpdate(lives);
         }

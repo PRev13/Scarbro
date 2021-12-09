@@ -19,6 +19,7 @@ public class PlatformFalls : MonoBehaviour
 
     void PlatformsFallsWithTime ()
     {
+        transform.GetComponent<BoxCollider2D>().enabled = false;
         transform.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         transform.GetComponent<Rigidbody2D>().gravityScale = GravityDirction;
         transform.DOScaleY(0, 0.8f);
