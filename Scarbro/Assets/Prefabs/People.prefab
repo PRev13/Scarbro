@@ -127,3 +127,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: be96ac68e2fbc2148b37e46332c9c3cf, type: 3}
   - {fileID: 21300000, guid: 3e3e55ff51bb4924f95f88de56958854, type: 3}
   - {fileID: 21300000, guid: 69084dba18f986b49ba9d9a993a1b738, type: 3}
+  spritesRescued:
+  - {fileID: 21300000, guid: e0bc4de54081a804eba41d2b0b430bff, type: 3}
+  - {fileID: 21300000, guid: 5e6a7df0391f3cd47995eb65948b8304, type: 3}
+  - {fileID: 21300000, guid: 9393368074e76524abee9116aebc5dfa, type: 3}
+  - {fileID: 21300000, guid: a6d9468012692464f89633df4ce111cc, type: 3}

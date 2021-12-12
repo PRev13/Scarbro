@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
     //GameControllerInputs manager. This help to make more easy use control
     GameControllerInputs inputMap;
 
+    Dialogues dialogues;
+
     void Start()
     {
         //Get references
@@ -54,17 +56,18 @@ public class Player : MonoBehaviour
 
         //player animator
         //anim = GetComponent<Animator>();
-
+        dialogues = GameManager.Instance.dialogues;
     }
 
     void Update()
-    {
+    {   
         if(isAbleToMove == false)
         {
             movVector.x = 0f;
             return;
         }
 
+            
         movVector.x = inputMap.LeftDirectional_Horizontal * speed; //Get X axis
 
         InputJump();
@@ -80,12 +83,15 @@ public class Player : MonoBehaviour
             spriteRenderer.flipX = true;
             PlayAnimation("Robot_Walk");//Play Walk Animation Left side
         }
+        
     }
 
     private void FixedUpdate()
     {
+      
         movVector.y = rigi.velocity.y; //Keep gravity force
-        rigi.velocity = movVector;//Update velocity
+        rigi.velocity = movVector; //Update velocity
+         
     }
 
     void InputJump()
