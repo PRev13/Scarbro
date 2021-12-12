@@ -6,7 +6,9 @@ public class People : MonoBehaviour
 {
     Dialogues dialogues;
     public Sprite[] sprites;
+    public Sprite[] spritesRescued;
     GameObject thePlayer;
+    private int spriteIndex; 
 
     private SpriteRenderer _spriteRenderer;
 
@@ -16,7 +18,8 @@ public class People : MonoBehaviour
 
     private void Start() {
         dialogues = GameManager.Instance.dialogues;
-        _spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
+        spriteIndex = Random.Range(0, sprites.Length);
+        _spriteRenderer.sprite = sprites[spriteIndex];
         thePlayer = GameObject.FindGameObjectWithTag(k.Tags.PLAYER);
 
     }
@@ -32,8 +35,10 @@ public class People : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         // Executed when Player reaaches the people and executes only once. && dialogues.GetComponent<Dialogues>().dialogueStarted == false
        if(other.gameObject.tag == "Player" ){
+            GetComponent<BoxCollider2D> ().enabled = false; // Disables box collider so it won't trigger the dialogues a second time.
             dialogues.GetComponent<Dialogues>().startDialouge();
-            Destroy(this.gameObject); // People disappear right away however only 1 person does
+            _spriteRenderer.sprite = spritesRescued[spriteIndex]; //Changes sprite of the people when rescued
+            Destroy(this.gameObject, 4); // People disappear after 4 seconds however only 1 person does
             thePlayer.GetComponent<Player>().UpdatePeopleRescueAdd1();
         }
    }

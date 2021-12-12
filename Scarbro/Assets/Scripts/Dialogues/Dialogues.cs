@@ -8,30 +8,25 @@ public class Dialogues : MonoBehaviour
     public float textSpeed; //Dialogue Speed
 
     private int index; // Index for the dialogue lines
-    public bool dialogueEnded = false;
+    public bool dialogueInProgress = false;
     public bool dialogueStarted = false;
 
     private void Start() {
         GetComponent<TMPro.TextMeshProUGUI>().text = string.Empty;
     }
 
-    private void Update() {
-        // Skips the dialogue time when pressed 'E'
-        if(Input.anyKeyDown && dialogueStarted){
+    private void Update() {        
             if(GetComponent<TMPro.TextMeshProUGUI>().text == lines[index]){
                 //Skips to the next sentence
                 NextLine();
-            } else {
-                // Completes the current sentece
-                StopAllCoroutines();
-                GetComponent<TMPro.TextMeshProUGUI>().text = lines[index];
             }
-        }
+        
     }
 
     public void startDialouge(){
         index = 0;
         dialogueStarted = true;
+        dialogueInProgress = true;
         StartCoroutine(TypeLine());
     }
 
@@ -44,6 +39,7 @@ public class Dialogues : MonoBehaviour
         }
     }
 
+
     void NextLine(){
 
         if(index < lines.Length -1)
@@ -55,7 +51,7 @@ public class Dialogues : MonoBehaviour
         } else {
             //End of Conversation
             //gameObject.SetActive(false);
-            dialogueEnded = true;
+            dialogueInProgress = false;
         }
     }
 }
