@@ -22,7 +22,21 @@ public class Player : MonoBehaviour
     Vector2 movVector;
     bool isGravityInverse = false;
     bool canChangeGravity = true;
-    public bool isAbleToMove = true;
+    bool isAbleToMove = true;
+    public bool IsAbleToMove
+    {
+        set
+        {
+            isAbleToMove = value;
+            if (value)
+                rigi.gravityScale = isGravityInverse ? -rigibodyOriginalGravityScale : rigibodyOriginalGravityScale;
+            else
+            {
+                rigi.gravityScale = 0f;
+                rigi.velocity = Vector2.zero;
+            }
+        }
+    }
 
     //Lifes
     int lives = 3;

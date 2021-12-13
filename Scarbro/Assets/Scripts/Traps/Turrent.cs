@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Turrent : MonoBehaviour
 {
-    public Transform playerTransform;
+    Transform playerTransform;
     public float rotationSpeed = 30f;
     public float delay;
     Transform turrentTransform;
@@ -22,7 +22,7 @@ public class Turrent : MonoBehaviour
         turrentTransform = transform.GetChild(0);
         bulletSpawnPoint = turrentTransform.GetChild(0);
         timeNextShoot = delay;
-        //playerTransform = GameManager.Instance.player.transform;
+        playerTransform = GameManager.Instance.player.transform;
     }
 
     void Update()

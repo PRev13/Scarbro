@@ -199,10 +199,10 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1.7
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3664bd8c48cfd4e4990188cd53e9690f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1907312280
 MonoBehaviour:
@@ -219,7 +219,6 @@ MonoBehaviour:
   speed: 3
   jumpForce: 6
   gravityChangeCooldown: 0.7
-  spawnLocation: {x: 0, y: 0, z: 0}
-  peopleSaved: 0
   checkGroundTransform: {fileID: 763625689}
   spriteRenderer: {fileID: 794057244}
+  isAbleToMove: 1

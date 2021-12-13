@@ -57,11 +57,16 @@ public class BoxCamera : MonoBehaviour
         transform.DORotate(destinyRotation, 1f).OnComplete(ReEnableMovePlayer);
 
         //Disable move of player
-        GameManager.Instance.player.isAbleToMove = false;
+        GameManager.Instance.player.IsAbleToMove = false;
+    }
+
+    void RotationFinish()
+    {
+        Invoke(nameof(ReEnableMovePlayer), 0.32f);
     }
 
    void ReEnableMovePlayer()
     {
-        GameManager.Instance.player.isAbleToMove = true;
+        GameManager.Instance.player.IsAbleToMove = true;
     }
 }

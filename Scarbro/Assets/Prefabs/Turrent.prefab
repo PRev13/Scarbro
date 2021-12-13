@@ -210,10 +210,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d35cfb5416b12b2479c1ee9c349da743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
   rotationSpeed: 40
-  delay: 4
-  gradesToShoot: 5
+  delay: 3.7
+  gradesToShoot: 3
   bulletSpeed: 5
   bulletPrefab: {fileID: 9106147856289611826, guid: 774a1931e23ebec46bc93266f0cb432d, type: 3}
 --- !u!61 &1774219154
