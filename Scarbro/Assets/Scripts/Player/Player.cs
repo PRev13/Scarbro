@@ -36,6 +36,10 @@ public class Player : MonoBehaviour
                 rigi.velocity = Vector2.zero;
             }
         }
+        get
+        {
+            return isAbleToMove;
+        }
     }
 
     //Lifes

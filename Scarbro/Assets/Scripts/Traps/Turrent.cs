@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Turrent : MonoBehaviour
 {
-    Transform playerTransform;
+    Player player;
     public float rotationSpeed = 30f;
     public float delay;
     Transform turrentTransform;
@@ -22,7 +22,7 @@ public class Turrent : MonoBehaviour
         turrentTransform = transform.GetChild(0);
         bulletSpawnPoint = turrentTransform.GetChild(0);
         timeNextShoot = delay;
-        playerTransform = GameManager.Instance.player.transform;
+        player = GameManager.Instance.player;
     }
 
     void Update()
@@ -30,7 +30,10 @@ public class Turrent : MonoBehaviour
         timeNextShoot -= Time.deltaTime;
         if (timeNextShoot < 0f)
         {
-            Vector3 dir = playerTransform.position - turrentTransform.position;
+            if (player.IsAbleToMove == false)
+                return;
+
+            Vector3 dir = player.transform.position - turrentTransform.position;
             dir.Normalize();
 
             float gradesDif = Vector2.Angle(dir, turrentTransform.up);
