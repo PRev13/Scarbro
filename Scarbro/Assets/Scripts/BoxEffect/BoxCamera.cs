@@ -7,6 +7,7 @@ public class BoxCamera : MonoBehaviour
 {
     //Vector3 offsetCamera = new Vector3(0f, 0f, -8.41f);
     public Transform boxTransform;
+    public GameObject gameControlsInstructions;
 
     public enum FACES {FACE1, FACE2, FACE3, FACE4, FACE5, FACE6};
     Tween moveTween;
@@ -24,6 +25,7 @@ public class BoxCamera : MonoBehaviour
             case FACES.FACE2:
                 destinyPos += new Vector3(8.41f, 0f, 0f);
                 destinyRotation = new Vector3(0f, 270f, 0f);
+                gameControlsInstructions.SetActive(false);
                 break;
             case FACES.FACE3:
                 destinyPos += new Vector3(0f, 0f, 8.41f);
