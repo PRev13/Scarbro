@@ -1026,7 +1026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6522966645128030896, guid: 32693c547ca728c4587b7ee25ecfd081, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.89
+      value: 14.55
       objectReference: {fileID: 0}
     - target: {fileID: 6522966645128030896, guid: 32693c547ca728c4587b7ee25ecfd081, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13293,14 +13293,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7319080957401912171, guid: 48b9b533c30213e4683010cc26f0549f, type: 3}
       propertyPath: textSpeed
-      value: 0.03
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7319080957401912171, guid: 48b9b533c30213e4683010cc26f0549f, type: 3}
       propertyPath: lines.Array.size
-      value: 4
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7319080957401912171, guid: 48b9b533c30213e4683010cc26f0549f, type: 3}
+      propertyPath: lines.Array.data[0]
+      value: 'Scarbro : You are safe now.          '
+      objectReference: {fileID: 0}
+    - target: {fileID: 7319080957401912171, guid: 48b9b533c30213e4683010cc26f0549f, type: 3}
+      propertyPath: lines.Array.data[1]
+      value: 'Person : Thank you!!! Please save the others!               '
+      objectReference: {fileID: 0}
+    - target: {fileID: 7319080957401912171, guid: 48b9b533c30213e4683010cc26f0549f, type: 3}
+      propertyPath: lines.Array.data[2]
+      value: 'Scarbro : I will go at once.              '
       objectReference: {fileID: 0}
     - target: {fileID: 7319080957401912171, guid: 48b9b533c30213e4683010cc26f0549f, type: 3}
       propertyPath: lines.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7319080957401912171, guid: 48b9b533c30213e4683010cc26f0549f, type: 3}
+      propertyPath: lines.Array.data[4]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7319080957401912174, guid: 48b9b533c30213e4683010cc26f0549f, type: 3}

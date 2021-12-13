@@ -24,10 +24,13 @@ public class Dialogues : MonoBehaviour
     }
 
     public void startDialouge(){
-        index = 0;
-        dialogueStarted = true;
-        dialogueInProgress = true;
-        StartCoroutine(TypeLine());
+        if(dialogueInProgress == false)
+        {
+            index = 0;
+            dialogueStarted = true;
+            dialogueInProgress = true;
+            StartCoroutine(TypeLine());
+        }
     }
 
     IEnumerator TypeLine(){
