@@ -26,6 +26,8 @@ public class DoorTeleport : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!collision.CompareTag(k.Tags.PLAYER)) return;
+
         SoundManager.PlaySound("Teleport");//Play Teleport Sound when passing through doors.
         if (spawnToLeftOfTargetDoor) //makes player spawn left of door
         {
